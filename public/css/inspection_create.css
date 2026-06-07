@@ -1,0 +1,27 @@
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    width: 100px;
+}
+
+.form-row select,
+.form-row input {
+    width: 200px;
+    padding: 5px;
+}
+
+.error {
+    margin-left: 10px;
+    color: red;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+button {
+    margin-top: 10px;
+    padding: 6px 12px;
+}

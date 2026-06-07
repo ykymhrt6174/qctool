@@ -1,0 +1,50 @@
+.menu-page {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.menu-page h1 {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.measurement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.measurement input {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.measurement span {
+    font-size: 16px;
+}
+
+button {
+    width: 120px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}

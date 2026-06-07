@@ -1,0 +1,41 @@
+.tab-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-area a {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.tab-area a.active {
+    font-weight: bold;
+}
+
+.inspection-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inspection-table th,
+.inspection-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.inspection-btn {
+    display: inline-block;
+    padding: 4px 12px;
+}
+
+.add-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background: #2d6cdf;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}

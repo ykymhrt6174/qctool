@@ -1,0 +1,99 @@
+.menu-page {
+    padding: 20px;
+    background: #fafafa;
+}
+
+/* タイトル */
+.menu-page h1 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    color: #222;
+}
+
+/* =========================
+   サマリー（2カラム）
+========================= */
+.trend-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+/* 各カラム */
+.trend-summary .col {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    padding: 15px;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 1行（ラベル + 値） */
+.trend-summary .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    gap: 10px;
+    padding: 6px 0;
+
+    border-bottom: 1px dashed #eee;
+}
+
+/* 最後の行は線なし */
+.trend-summary .row:last-child {
+    border-bottom: none;
+}
+
+/* ラベル */
+.trend-summary .label {
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+}
+
+/* 値 */
+.trend-summary .value {
+    color: #111;
+    font-size: 14px;
+
+    font-variant-numeric: tabular-nums;
+    /* 数値揃え */
+}
+
+/* =========================
+   Chartエリア
+========================= */
+#trendChart {
+    width: 100%;
+    height: 400px !important;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    padding: 10px;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   レスポンシブ対応
+========================= */
+@media (max-width: 768px) {
+
+    .trend-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .trend-summary .row {
+        grid-template-columns: 140px 1fr;
+    }
+
+    #trendChart {
+        height: 320px !important;
+    }
+}
