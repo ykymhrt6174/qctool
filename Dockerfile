@@ -13,17 +13,18 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# 全コピー
 COPY . .
 
+# Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# ★ここ重要（キャッシュ削除含める）
+# ⭐ Viteここ絶対この順番
 RUN npm install
 RUN npm run build
 
-# ★確認
-RUN ls -la public/build || true
-RUN cat public/build/manifest.json || true
+# ⭐ 超重要チェック
+RUN ls -la public/build
 
 EXPOSE 10000
 
