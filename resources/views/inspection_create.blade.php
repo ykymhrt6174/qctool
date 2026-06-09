@@ -28,7 +28,7 @@
         </select>
 
         @error('production_id')
-            <span class="error">製品名を入力してください</span>
+            <span class="error">{{ $message }}</span>
         @enderror
     </div>
 
@@ -38,7 +38,7 @@
         <input type="date" name="production_date" value="{{ old('production_date') }}">
 
         @error('production_date')
-            <span class="error">生産日を入力してください</span>
+            <span class="error">{{ $message }}</span>
         @enderror
     </div>
 
@@ -48,7 +48,7 @@
         <input type="date" name="shipment_date" value="{{ old('shipment_date') }}">
 
         @error('shipment_date')
-            <span class="error">出荷日を入力してください</span>
+            <span class="error">{{ $message }}</span>
         @enderror
     </div>
 
