@@ -10,7 +10,6 @@
 
     <h1>検査結果の傾向</h1>
 
-    {{-- サマリー --}}
     <div class="trend-summary">
 
         <div class="col">
@@ -48,7 +47,6 @@
                 <div class="value">{{ $max }}</div>
             </div>
 
-            {{-- ★ 管理限界線はここでは表示しない（条件付き） --}}
             <div class="row">
                 <div class="label">UCL / LCL</div>
                 <div class="value">
@@ -87,7 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const datasets = [
 
-        // 素点（必須）
         {
             label: '検査結果',
             data: values,
