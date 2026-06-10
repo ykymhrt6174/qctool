@@ -72,24 +72,11 @@ erDiagram
         bigint UniqueID PK
         bigint production_id FK
         bigint user_id FK
-        string production_date
+        date production_date
         date shipment_date
         float measurement
     }
 
     users ||--o{ inspections : "has"
     productions ||--o{ inspections : "has"
-```
----
-
-## ローカル環境での起動方法
-
-```bash
-    git clone https://github.com/ykymhrt6174/qctool.git
-    cd qctool
-    composer install
-    cp .env.example .env
-    php artisan key:generate
-    php artisan migrate --seed
-    php artisan serve
 ```
