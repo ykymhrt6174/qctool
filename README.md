@@ -12,10 +12,11 @@
 ## テスト用ログインアカウント
 採用担当者様がすぐに動作確認できるよう、テストデータをあらかじめ用意しております。
 
-```text
+* email
+```
 admin@example.com
 ```
-
+* password
 ```password
 password
 ```
