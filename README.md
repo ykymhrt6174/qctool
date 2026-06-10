@@ -1,58 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# qctool
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+工場の製品検査工程におけるデータ管理・可視化を行うWebアプリケーションです。
 
-## About Laravel
+## 開発環境・公開URL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **公開URL:** https://qctool-fbts.onrender.com
+* **GitHubリポジトリ:** https://github.com/ykymhrt6174/qctool
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## テスト用ログインアカウント
+採用担当者様がすぐに動作確認できるよう、テストデータをあらかじめ用意しております。
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```text
+admin@example.com
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+```password
+password
+```
 
-## Contributing
+> **備考:** 本アプリはRenderの無料プランでホストしているため、初回のアクセス時のみサーバーの起動に40〜50秒ほど時間がかかる場合があります。また、データの整合性を保つため、コンテナ起動時に自動でデータベースの初期化（`migrate:fresh --seed`）が行われる仕様にしています。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 主な機能一覧
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* **ユーザー認証機能** (Breeze)
+  * ログイン
+* **CRUD（データ操作）機能**
+  * 検査データの登録・削除・一覧表示
+* **ダッシュボード（可視化）機能**
+  * 登録データを元にしたグラフ生成（Chart.jsを使用）
+* **[未検査対象を生産日(ロット)順、出荷日順に切り替えられるようにしました]**
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 使用技術
 
-## License
+### バックエンド
+* PHP 8.4-cli
+* Laravel 13.12.0
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### フロントエンド
+* HTML / CSS / JavaScript
+
+### インフラ・データベース
+* **Webサーバー:** Render
+* **データベース:** Railway (MySQL)
+
+---
+
+## データベース設計（ER図）
+```mermaid
+erDiagram
+    users {
+        int UniqueID PK
+        string name
+        string email
+        string password
+    }
+
+    productions {
+        int UniqueID PK
+        string name
+        string email
+    }
+
+    inspections {
+        int UniqueID PK
+        int production_id FK
+        int user_id FK
+        string lot
+        date shipment_date
+        float measurement
+    }
+
+    users ||--o{ inspections : "has"
+    productions ||--o{ inspections : "has"
+```
+---
+
+## ローカル環境での起動方法
+他のエンジニアがあなたのコードを手元で動かす際の手順です。
+
+1. リポジトリをクローン
+```bash
+    git clone https://github.com/ykymhrt6174/qctool.git
+    cd qctool
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    php artisan migrate --seed
+    php artisan serve
+```
