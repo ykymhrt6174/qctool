@@ -32,7 +32,7 @@ password
   * 検査データの登録・削除・一覧表示
 * **ダッシュボード（可視化）機能**
   * 登録データを元にしたグラフ生成（Chart.jsを使用）
-* **[未検査対象を生産日(ロット)順、出荷日順に切り替えられるようにしました]**
+* **未検査対象を生産日(ロット)順、出荷日順に切り替えられるようにしました**
 
 ---
 
@@ -55,23 +55,23 @@ password
 ```mermaid
 erDiagram
     users {
-        int UniqueID PK
+        bigint UniqueID PK
         string name
         string email
         string password
     }
 
     productions {
-        int UniqueID PK
+        bigint UniqueID PK
         string name
         string email
     }
 
     inspections {
-        int UniqueID PK
-        int production_id FK
-        int user_id FK
-        string lot
+        bigint UniqueID PK
+        bigint production_id FK
+        bigint user_id FK
+        string production_date
         date shipment_date
         float measurement
     }
@@ -82,9 +82,7 @@ erDiagram
 ---
 
 ## ローカル環境での起動方法
-他のエンジニアがあなたのコードを手元で動かす際の手順です。
 
-1. リポジトリをクローン
 ```bash
     git clone https://github.com/ykymhrt6174/qctool.git
     cd qctool
