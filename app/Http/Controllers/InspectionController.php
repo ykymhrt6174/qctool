@@ -81,7 +81,6 @@ class InspectionController extends Controller
 
         $inspection->update([
             'measurement' => $request->measurement,
-            'user_id' => Auth::id(),
             'inspection_date' => now(),
         ]);
 
