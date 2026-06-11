@@ -19,19 +19,7 @@
         <a href="{{ route('dashboard') }}">ホームへ</a>
     @endif
 
-    <div class="user-info">
-        <div>{{ now()->format('Y/m/d H:i') }}</div>
-
-        @auth
-            <div>ユーザー：{{ auth()->user()->name }}</div>
-        @endauth
-        
-    </div>
-
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit">ログアウト</button>
-    </form>
+    <div>{{ now()->format('Y/m/d H:i') }}</div>
 </header>
 
 <main class="main">
