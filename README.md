@@ -9,26 +9,12 @@
 
 ---
 
-## テスト用ログインアカウント
-採用担当者様がすぐに動作確認できるよう、テストデータをあらかじめ用意しております。
-
-* email
-```
-admin@example.com
-```
-* password
-```password
-password
-```
-
-> **備考:** 本アプリはRenderの無料プランでホストしているため、初回のアクセス時のみサーバーの起動に40〜50秒ほど時間がかかる場合があります。また、データの整合性を保つため、コンテナ起動時に自動でデータベースの初期化（`migrate:fresh --seed`）が行われる仕様にしています。
+> **備考:** 本アプリはRenderの無料プランでホストしているため、初回のアクセス時のみサーバーの起動に40〜50秒ほど時間がかかる場合があります。
 
 ---
 
 ## 主な機能一覧
 
-* **ユーザー認証機能** (Breeze)
-  * ログイン
 * **CRUD（データ操作）機能**
   * 検査データの登録・削除・一覧表示
 * **ダッシュボード（可視化）機能**
@@ -55,12 +41,6 @@ password
 ## データベース設計（ER図）
 ```mermaid
 erDiagram
-    users {
-        bigint UniqueID PK
-        string name
-        string email
-        string password
-    }
 
     productions {
         bigint UniqueID PK
@@ -71,12 +51,10 @@ erDiagram
     inspections {
         bigint UniqueID PK
         bigint production_id FK
-        bigint user_id FK
         date production_date
         date shipment_date
         float measurement
     }
 
-    users ||--o{ inspections : "has"
     productions ||--o{ inspections : "has"
 ```

@@ -65,20 +65,6 @@ class InspectionController extends Controller
 
     public function update(Request $request, Inspection $inspection)
     {
-        $request->validate([
-            'production_id' => ['required', 'exists:productions,id'],
-            'production_date' => ['required'],
-            'shipment_date' => ['required', 'date', 'after_or_equal:today'],
-        ], [
-            'production_id.required' => '製品名を入力してください。',
-            'production_id.exists' => '製品名を入力してください。',
-
-            'production_date.required' => '生産日を入力してください。',
-
-            'shipment_date.after_or_equal' => '出荷日は今日以降の日付を入力してください。',
-            'shipment_date.required' => '出荷日を入力してください。',
-        ]);
-
         $inspection->update([
             'measurement' => $request->measurement,
             'inspection_date' => now(),
