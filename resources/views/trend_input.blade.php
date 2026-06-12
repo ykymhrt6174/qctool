@@ -51,6 +51,7 @@
             <button type="submit">検索</button>
         </div>
 
+        <div>※2026/5/1～2026/5/15の結果がサンプルデータとして登録しています</div>
     </form>
 
 </div>
