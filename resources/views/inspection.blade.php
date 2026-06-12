@@ -34,7 +34,7 @@
         <thead>
             <tr>
                 <th>製品名</th>
-                <th>ロット</th>
+                <th>生産日</th>
                 <th>出荷日</th>
                 <th></th>
             </tr>
